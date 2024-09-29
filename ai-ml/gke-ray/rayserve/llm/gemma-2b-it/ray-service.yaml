@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# [START gke_ai_ml_gke_ray_rayserve_llm_gemma_2b_it]
 apiVersion: ray.io/v1
 kind: RayService
 metadata:
@@ -51,11 +50,11 @@ spec:
               limits:
                 cpu: "2"
                 memory: "8Gi"
-                ephemeral-storage: "2Gi"  # Increased ephemeral storage limit
+                ephemeral-storage: "9Gi"  # Increased ephemeral storage limit
               requests:
                 cpu: "2"
                 memory: "8Gi"
-                ephemeral-storage: "2Gi"  # Increased ephemeral storage request
+                ephemeral-storage: "9Gi"  # Increased ephemeral storage request
             ports:
             - containerPort: 6379
               name: gcs-server
@@ -70,7 +69,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: hf-secret
-                  key: hf_api_token              
+                  key: hf_api_token
     workerGroupSpecs:
     - replicas: 1
       minReplicas: 0
@@ -96,12 +95,12 @@ spec:
                 cpu: "8"
                 memory: "20Gi"
                 nvidia.com/gpu: "1"
-                ephemeral-storage: "4Gi"  # Increased ephemeral storage limit
+                ephemeral-storage: "9Gi"  # Increased ephemeral storage limit
               requests:
                 cpu: "8"
                 memory: "20Gi"
                 nvidia.com/gpu: "1"
-                ephemeral-storage: "4Gi"  # Increased ephemeral storage request
+                ephemeral-storage: "9Gi"  # Increased ephemeral storage request
           nodeSelector:
             cloud.google.com/gke-accelerator: nvidia-l4
-# [END gke_ai_ml_gke_ray_rayserve_llm_gemma_2b_it]
+
