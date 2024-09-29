@@ -51,9 +51,11 @@ spec:
               limits:
                 cpu: "2"
                 memory: "8Gi"
+                ephemeral-storage: "2Gi"  # Increased ephemeral storage limit
               requests:
                 cpu: "2"
                 memory: "8Gi"
+                ephemeral-storage: "2Gi"  # Increased ephemeral storage request
             ports:
             - containerPort: 6379
               name: gcs-server
@@ -94,10 +96,12 @@ spec:
                 cpu: "8"
                 memory: "20Gi"
                 nvidia.com/gpu: "1"
+                ephemeral-storage: "4Gi"  # Increased ephemeral storage limit
               requests:
                 cpu: "8"
                 memory: "20Gi"
                 nvidia.com/gpu: "1"
+                ephemeral-storage: "4Gi"  # Increased ephemeral storage request
           nodeSelector:
             cloud.google.com/gke-accelerator: nvidia-l4
 # [END gke_ai_ml_gke_ray_rayserve_llm_gemma_2b_it]
